@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>هيم للخدمات الإلكترونية</title>
+<link rel="icon" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: موثوق، مرتب، مكتب خدمات سعودي
+   IDEA: مكتب خدمات إلكترونية — ملف ومعاملة تنجز
+   PICTURE: رسمة اللابتوب من هوية هيم في الواجهة
+   COLOUR and TYPE: كحلي الشعار + ذهبي الشعار على أبيض، خط Tajawal
+   LAYOUT: تصميم العميل + ثلاث صفحات مستقلة (آلية العمل، الخصوصية، التزامنا) */
+:root{color-scheme:light;--navy:#1a2d5a;--gold:#b98a4e;--gold2:#c99a5c;--ink:#1a2d5a;--mut:#5b6478;--bg:#fff;--soft:#f5f6f9;--line:#e6e8ee;--wa:#25d366}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 Tajawal,"Segoe UI",Tahoma,sans-serif;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:auto;padding-inline:max(4vw,16px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 24px;border-radius:6px;font-weight:700;font-size:16px;border:1.5px solid transparent;cursor:pointer;transition:.2s;font-family:inherit}
+.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--gold2);outline-offset:2px}
+.gold{background:var(--gold);color:#fff}.gold:hover{background:#a67a40}
+.ghost{border-color:var(--navy);color:var(--navy);background:#fff}.ghost:hover{background:var(--navy);color:#fff}
+.wa{background:var(--wa);color:#fff}.wa:hover{background:#1ebe5a}
+.tk{background:#fff;color:var(--navy)}.tk:hover{background:var(--gold2);color:#fff}
+.btn svg{width:20px;height:20px}
+/* top bar */
+.top{background:var(--navy);color:#fff;font-size:14px}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:38px;flex-wrap:wrap}
+.top a{display:inline-flex;gap:6px;align-items:center}.top a:hover{color:var(--gold2)}
+.top svg{width:15px;height:15px}.top .r{display:flex;gap:20px}
+/* header */
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:20px;min-height:84px;position:relative}
+.brand img{height:66px;width:auto;mix-blend-mode:multiply}
+nav{display:flex;gap:clamp(14px,2vw,28px);margin-inline:auto;font-weight:500;font-size:15.5px}
+nav a{padding:6px 0;white-space:nowrap}nav a:hover,nav a.on{color:var(--gold)}
+.menu{display:none;background:none;border:0;width:44px;height:44px;color:var(--navy);cursor:pointer}
+/* hero banner */
+.hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(120% 90% at 15% 40%,#24407a 0%,#1a2d5a 45%,#111f42 100%)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.025) 0 2px,transparent 2px 46px);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center;gap:30px;padding-block:56px 110px}
+.hero h1{margin:0;font-weight:800;font-size:clamp(32px,4.4vw,56px);line-height:1.25;text-wrap:balance;color:#fff}
+.hero h1 span{display:block;color:var(--gold2);background:linear-gradient(90deg,#e2bd85,#b98a4e);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#cdd5e6;font-size:18px;max-width:34em;margin:18px 0 28px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:6px 14px;font-size:14px;font-weight:700;margin-bottom:18px}
+.hero .badge{background:rgba(255,255,255,.08);border-color:rgba(201,154,92,.5);color:#fff;backdrop-filter:blur(4px)}
+.badge svg{width:18px;height:18px;color:var(--gold2)}
+.hero .ghost{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}.hero .ghost:hover{background:#fff;color:var(--navy)}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14)}
+.stats b{display:block;font-size:26px;color:var(--gold2);line-height:1.2}.stats span{font-size:14px;color:#cdd5e6}
+.stage{position:relative;aspect-ratio:1;max-width:500px;width:100%;margin-inline:auto}
+.ring{position:absolute;inset:4%;border-radius:50%;border:2px solid rgba(201,154,92,.35)}
+.ring.r2{inset:-4%;border:14px solid transparent;border-bottom-color:var(--gold);border-left-color:var(--gold);transform:rotate(-20deg);opacity:.9;filter:drop-shadow(0 0 18px rgba(201,154,92,.35))}
+.ring.r3{inset:12%;border:1px dashed rgba(255,255,255,.18);animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.deck{position:absolute;inset:14%}
+.deck img{position:absolute;inset:0;width:100%;height:100%;border-radius:18px;object-fit:cover;box-shadow:0 26px 50px rgba(0,0,0,.4);transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .9s,filter .9s;opacity:0;transform:scale(.8)}
+.deck img.p0{opacity:1;transform:none;z-index:3}
+.deck img.p1{opacity:.75;transform:translateX(-24%) rotate(-10deg) scale(.86);z-index:2;filter:brightness(.7)}
+.deck img.p2{opacity:.75;transform:translateX(24%) rotate(10deg) scale(.86);z-index:1;filter:brightness(.7)}
+.chip{position:absolute;z-index:4;display:flex;align-items:center;gap:8px;background:#fff;color:var(--navy);border-radius:12px;padding:9px 14px;font-weight:700;font-size:14px;box-shadow:0 12px 30px rgba(0,0,0,.25);animation:fl 5s ease-in-out infinite;white-space:nowrap}
+.chip svg{width:22px;height:22px;flex:none}
+.chip.c1{top:6%;inset-inline-start:-2%}.chip.c1 svg{color:var(--gold)}
+.chip.c2{bottom:8%;inset-inline-end:-4%;animation-delay:-2.5s}.chip.c2 svg{color:var(--wa)}
+@keyframes fl{50%{transform:translateY(-10px)}}
+.dots{position:absolute;inset-inline-end:3vw;top:40px;width:110px;height:80px;background:radial-gradient(var(--gold) 2px,transparent 2.5px) 0 0/22px 22px;opacity:.5}
+.dots.d2{inset-inline-end:auto;inset-inline-start:2vw;top:auto;bottom:90px}
+.swoosh{position:absolute;inset-inline:0;bottom:-1px;width:100%;height:80px;z-index:1}
+/* sections */
+.band{padding:clamp(40px,5vw,72px) 0}
+.ttl{text-align:center;margin-bottom:34px}
+.ttl h2{display:inline-flex;align-items:center;gap:22px;margin:0;font-size:clamp(28px,3vw,38px);font-weight:800}
+.ttl h2::before,.ttl h2::after{content:"";width:clamp(30px,7vw,80px);height:2px;background:var(--gold)}
+.ttl p{margin:6px 0 0;color:var(--mut)}
+/* service categories */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.cat{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.25s}
+.cat:hover{border-color:var(--gold2);box-shadow:0 12px 28px rgba(26,45,90,.09);transform:translateY(-3px)}
+.cat>img{aspect-ratio:1;object-fit:cover;width:100%;border-bottom:1px solid var(--line)}
+.cat .in{padding:22px;display:flex;flex-direction:column;flex:1}
+.cat .hd{display:flex;gap:14px;align-items:center;margin-bottom:10px}
+.ic{flex:none;width:54px;height:54px;color:var(--navy)}.ic .g{color:var(--gold)}
+.cat .n{color:var(--gold);font-weight:700;font-size:14px;display:block}
+.cat h3{margin:0;font-size:20px;line-height:1.35}
+.cat p{margin:0 0 10px;color:var(--mut);font-size:15px}
+.cat ul{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:2px}
+.cat li a{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:6px;font-size:15.5px;min-height:38px}
+.cat li a::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.cat li a:hover{background:var(--soft);color:var(--gold)}
+.cat li a span{margin-inline-start:auto;font-size:13px;color:var(--gold);opacity:0;transition:.2s}
+.cat li a:hover span{opacity:1}
+.cat .btn{margin-top:auto;width:100%}
+/* featured bank */
+.feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,4vw,50px);align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:clamp(16px,3vw,34px);margin-top:28px}
+.feat img{border-radius:10px;box-shadow:0 10px 30px rgba(26,45,90,.12)}
+.feat .tag{color:var(--gold);font-weight:700}
+.feat h3{font-size:clamp(26px,3vw,34px);margin:4px 0 10px;line-height:1.3}
+.feat p{color:var(--mut);margin:0 0 14px}
+.chk{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:9px}
+.chk li{display:flex;gap:10px;align-items:flex-start}
+.chk li::before{content:"";flex:none;margin-top:4px;width:20px;height:20px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
+/* why */
+.why{background:var(--soft);border:1px solid var(--line);border-radius:14px;display:grid;grid-template-columns:1.1fr repeat(4,minmax(0,1fr));gap:18px;align-items:center;padding:26px clamp(18px,3vw,34px)}
+.why h2{margin:0;font-size:28px}.why>div:first-child p{margin:0;color:var(--mut)}
+.wi{display:flex;gap:12px;align-items:center}
+.wi svg{flex:none;width:44px;height:44px;color:var(--gold)}
+.wi b{display:block;font-size:17px}.wi span{color:var(--mut);font-size:14px}
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:start}
+.about h2{font-size:clamp(28px,3vw,36px);margin:0 0 12px}
+.about p{color:var(--mut);margin:0 0 14px;font-size:17px}
+.vm{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.vm div{background:var(--navy);color:#fff;border-radius:12px;padding:20px}
+.vm b{display:block;color:var(--gold2);font-size:19px;margin-bottom:4px}.vm p{color:#dfe4ef;margin:0;font-size:15px}
+.cert{display:flex;gap:14px;align-items:center;border:1.5px dashed var(--gold);border-radius:12px;padding:16px 18px;background:#fffaf3}
+.cert svg{flex:none;width:46px;height:46px;color:var(--gold)}
+.cert b{display:block;font-size:18px}.cert span{color:var(--mut);font-size:14px}
+.box{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:22px;margin-bottom:16px}
+.box h3{margin:0 0 12px;font-size:21px}
+.box .chk{margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pills span{background:#fff;border:1px solid var(--line);border-radius:30px;padding:7px 16px;font-weight:700;font-size:15px}
+/* faq */
+.faq{max-width:860px;margin:auto}
+details{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;background:#fff}
+summary{cursor:pointer;padding:15px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold);font-size:22px;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin:0;padding:0 18px 16px;color:var(--mut)}
+/* contact */
+.contact{background:var(--navy);color:#fff;border-radius:14px;padding:clamp(24px,4vw,40px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.contact h2{margin:0 0 4px;font-size:clamp(24px,3vw,32px)}.contact p{margin:0;opacity:.85}
+/* inner pages */
+.view[hidden]{display:none}
+.phero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.phero .wrap{padding-block:clamp(36px,5vw,64px)}
+.phero h1{margin:6px 0 8px;font-size:clamp(32px,4vw,48px);line-height:1.2}
+.phero p{margin:0;max-width:40em;color:#dfe4ef;font-size:17px}
+.crumb{font-size:14px;color:var(--gold2)}.crumb a{color:#fff;opacity:.8}.crumb a:hover{opacity:1}
+.phero::after{content:"";position:absolute;inset-inline-end:4vw;top:24px;width:130px;height:90px;background:radial-gradient(var(--gold) 2px,transparent 2.5px) 0 0/22px 22px;opacity:.5}
+.pbody{max-width:900px;margin:auto}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;position:relative}
+.steps li{counter-increment:s;display:grid;grid-template-columns:72px 1fr;gap:20px;align-items:start;padding-bottom:30px;position:relative}
+.steps li:not(:last-child)::after{content:"";position:absolute;inset-inline-start:35px;top:72px;bottom:4px;width:2px;background:var(--line)}
+.steps li::before{content:counter(s);width:72px;height:72px;border-radius:50%;background:#fff;border:2px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:30px;font-weight:800}
+.steps li:last-child::before{background:var(--gold);color:#fff}
+.steps b{display:block;font-size:21px;padding-top:12px}
+.steps span{color:var(--mut)}
+.lead{font-size:19px;color:var(--ink);line-height:1.9;margin:0 0 26px}
+.cards2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:26px}
+.cards2 div{border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;gap:14px;align-items:flex-start}
+.cards2 svg{flex:none;width:40px;height:40px;color:var(--gold)}
+.cards2 b{display:block;font-size:18px;margin-bottom:2px}.cards2 span{color:var(--mut);font-size:15px}
+.alert{display:flex;gap:14px;align-items:center;background:#fff4f2;border:1.5px solid #e2a597;border-radius:12px;padding:18px 20px;margin-bottom:26px}
+.alert svg{flex:none;width:42px;height:42px;color:#c0392b}
+.alert b{display:block;font-size:18px;color:#8e2a1f}.alert span{color:#6b3b34}
+.pnav{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+/* footer */
+footer{background:var(--navy);color:#dfe4ef;margin-top:clamp(40px,5vw,70px)}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:30px;padding-block:44px 30px}
+footer h4{color:#fff;margin:0 0 14px;font-size:18px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
+footer a:hover{color:var(--gold2)}
+.flogo{background:#fff;border-radius:12px;padding:8px;width:130px;margin-bottom:12px}
+.fdesc{font-size:15px;margin:0 0 14px}
+.soc{display:flex;gap:10px}
+.soc a{width:42px;height:42px;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:grid;place-items:center}
+.soc a:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+.soc svg{width:19px;height:19px}
+.ci li{display:flex;gap:10px;align-items:center}.ci svg{flex:none;width:18px;height:18px;color:var(--gold2)}
+.copy{border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:14px;padding:16px;opacity:.85}
+/* gallery */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:26px}
+.chips button{font:inherit;font-weight:700;font-size:15px;min-height:44px;padding:8px 20px;border-radius:30px;border:1.5px solid var(--line);background:#fff;color:var(--navy);cursor:pointer}
+.chips button:hover{border-color:var(--gold)}
+.chips button[aria-selected=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.sv{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.sv:hover{box-shadow:0 12px 28px rgba(26,45,90,.1);transform:translateY(-3px);border-color:var(--gold2)}
+.sv img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;background:var(--soft)}
+.sv .b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:10px;flex:1}
+.sv h3{margin:0;font-size:17px;line-height:1.4}
+.sv .btn{margin-top:auto;min-height:44px;padding:8px 12px;font-size:15px;width:100%}
+@media(max-width:1000px){.gal{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.gal{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.sv h3{font-size:15px}.sv .b{padding:10px}.sv .btn{font-size:14px;gap:6px}.chips{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding-inline:16px}.chips button{flex:none}}
+/* floating whatsapp */
+.float{position:fixed;inset-inline-start:18px;bottom:18px;z-index:30;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.float svg{width:32px;height:32px}
+.float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:pl 2s infinite}
+@keyframes pl{to{transform:scale(1.5);opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media(max-width:1100px){
+ nav{display:none;position:absolute;top:100%;inset-inline:0;background:#fff;flex-direction:column;gap:0;padding:8px 16px 16px;border-bottom:1px solid var(--line);box-shadow:0 10px 20px rgba(0,0,0,.06)}
+ nav.open{display:flex}nav a{padding:12px 4px;border-bottom:1px solid var(--line);font-size:16px}
+ .menu{display:grid;place-items:center;margin-inline-start:auto}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .why{grid-template-columns:repeat(2,minmax(0,1fr))}.why>div:first-child{grid-column:1/-1}
+ footer .wrap{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+ header .hbtn{display:none}
+ .hero .wrap{grid-template-columns:1fr;text-align:center;padding-block:30px 90px}
+ .stats{justify-content:center}
+ .hero p{margin-inline:auto}.hero .cta{justify-content:center}
+ .hero .pic{order:-1;width:min(340px,82vw);margin:auto}
+ .chip{font-size:13px;padding:7px 11px}.chip.c1{inset-inline-start:0}.chip.c2{inset-inline-end:0}
+ .feat,.about{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ .top .tkl{display:none}
+ .grid,.why,.cards2,.vm{grid-template-columns:1fr}
+ .brand img{height:56px}
+ .cta .btn{flex:1 1 100%}
+ footer .wrap{grid-template-columns:1fr}
+ .contact{text-align:center;justify-content:center}.contact .cta{width:100%}
+ .steps li{grid-template-columns:54px 1fr;gap:14px}
+ .steps li::before{width:54px;height:54px;font-size:24px}
+ .steps li:not(:last-child)::after{inset-inline-start:26px;top:54px}
+ .steps b{padding-top:8px;font-size:19px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></symbol>
+ <symbol id="i-tk" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 2h-3.3v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.2 6.2 0 1 0 5.3 6.2V8.6a7.9 7.9 0 0 0 4.6 1.5V6.8a4.6 4.6 0 0 1-4.6-4.6z"/></symbol>
+ <symbol id="i-ok" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M12 2.5l8 3v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10v-6z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M8 12l3 3 5-6"/></symbol>
+ <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.6"/></g></symbol>
+ <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+ <symbol id="i-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4M9 12h6M9 16h6"/></g></symbol>
+ <symbol id="i-stop" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9.5"/><path d="M5.5 5.5l13 13"/></g></symbol>
+ <symbol id="i-scale" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 21h10M4 7h16M4 7l-2.5 6a2.5 2.5 0 0 0 5 0zM20 7l-2.5 6a2.5 2.5 0 0 0 5 0z"/></g></symbol>
+ <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M12 20s-8-4.7-8-10.3A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.7C20 15.3 12 20 12 20z"/></symbol>
+</svg>
+
+<div class="top"><div class="wrap">
+ <div class="r">
+  <a href="https://wa.me/966542115065" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span dir="ltr">054 211 5065</span></a>
+  <a class="tkl" href="https://www.tiktok.com/@h4joknvgi26" target="_blank" rel="noopener"><svg><use href="#i-tk"/></svg><span dir="ltr">@h4joknvgi26</span></a>
+ </div>
+ <span><svg style="width:15px;height:15px;vertical-align:-3px;color:#c99a5c"><use href="#i-ok"/></svg> موثق بوثيقة العمل الحر</span>
+</div></div>
+
+<header><div class="wrap">
+ <a class="brand" href="#home" aria-label="هيم للخدمات الإلكترونية"><img src="logo.jpg" alt="شعار هيم للخدمات الإلكترونية"></a>
+ <nav id="nav">
+  <a href="#home">الرئيسية</a>
+  <a href="#services">الخدمات</a>
+  <a href="#about">من نحن</a>
+  <a href="#how-it-works">آلية العمل</a>
+  <a href="#commitment">التزامنا تجاه العملاء</a>
+  <a href="#privacy">سياسة الخصوصية</a>
+  <a href="#contact">تواصل معنا</a>
+ </nav>
+ <a class="btn gold hbtn" data-s="" href="#">اطلب خدمة الآن</a>
+ <button class="menu" id="menu" aria-label="القائمة" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div></header>
+
+<!-- ========== الصفحة الرئيسية ========== -->
+<main class="view" id="v-home">
+<section class="hero" id="home">
+ <div class="dots"></div><div class="dots d2"></div>
+ <svg class="swoosh" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80V48C360 0 1000 0 1440 58V80Z" fill="#fff"/><path d="M0 48C360 0 1000 0 1440 58" fill="none" stroke="#b98a4e" stroke-width="3"/></svg>
+ <div class="wrap">
+  <div>
+   <div class="badge"><svg><use href="#i-ok"/></svg> موثق بوثيقة العمل الحر</div>
+   <h1>ننجز خدماتك الإلكترونية <span>بسرعة واحترافية</span></h1>
+   <p>خدمات إلكترونية وحلول رقمية متنوعة في مكان واحد، توفّر عليك الوقت والجهد بأسلوب منظم واحترافي.</p>
+   <div class="cta">
+    <a class="btn gold" data-s="" href="#"><svg><use href="#i-wa"/></svg> اطلب الخدمة الآن</a>
+    <a class="btn ghost" href="#services">تصفح الخدمات</a>
+   </div>
+   <div class="stats">
+    <div><b>+30 سنة</b><span>خبرة أكثر من 30 سنة</span></div>
+    <div><b>6</b><span>أقسام خدمات</span></div>
+    <div><b>مكان واحد</b><span>لكل معاملاتك</span></div>
+   </div>
+  </div>
+  <div class="pic"><div class="stage" aria-hidden="true">
+   <div class="ring r2"></div><div class="ring"></div><div class="ring r3"></div>
+   <div class="deck" id="deck">
+    <img src="s/absher.jpg" alt=""><img src="s/bank.jpg" alt=""><img src="s/adl.jpg" alt=""><img src="s/travel.jpg" alt=""><img src="s/citizen.jpg" alt=""><img src="s/cv.jpg" alt="">
+   </div>
+   <div class="chip c1"><svg><use href="#i-ok"/></svg> خدمات موثوقة</div>
+   <div class="chip c2"><svg><use href="#i-wa"/></svg> اطلب عبر واتساب</div>
+  </div></div>
+ </div>
+</section>
+
+<section class="band" id="services"><div class="wrap">
+ <div class="ttl"><h2>خدماتنا</h2><p>اختر خدمتك واضغط «اطلب الخدمة» ويفتح لك الواتساب برسالة جاهزة باسمها</p></div>
+ <div class="chips" id="chips" role="tablist"></div>
+ <div class="gal" id="gal"></div>
+ <div class="ttl" style="margin-top:56px"><h2>أقسام خدماتنا</h2><p>كل خدماتنا بالتفصيل، اضغط على أي خدمة لطلبها</p></div>
+ <div class="grid" id="cats"></div>
+
+</div></section>
+
+<section class="wrap" aria-label="لماذا تختارنا">
+ <div class="why">
+  <div><h2>لماذا تختارنا؟</h2><p>قيم نلتزم فيها مع كل عميل</p></div>
+  <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><div><b>السرعة والإنجاز</b><span>نوفر وقتك وجهدك</span></div></div>
+  <div class="wi"><svg><use href="#i-lock"/></svg><div><b>الخصوصية والسرية</b><span>معلوماتك لتنفيذ خدمتك فقط</span></div></div>
+  <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M12 6l1 2 2 .3-1.5 1.4.4 2.1-1.9-1-1.9 1 .4-2.1L9 8.3l2-.3zM8.5 14L6 21l3-1.5 2 2.5 1-6M15.5 14L18 21l-3-1.5-2 2.5"/></svg><div><b>الجودة والإتقان</b><span>نراجع طلبك قبل التسليم</span></div></div>
+  <div class="wi"><svg><use href="#i-heart"/></svg><div><b>الاهتمام بالعميل</b><span>رضاكم هدفنا</span></div></div>
+ </div>
+</section>
+
+<section class="band" id="about"><div class="wrap about">
+ <div>
+  <h2>من نحن؟</h2>
+  <p>هيم للخدمات الإلكترونية مكتب يقدم مجموعة متنوعة من الخدمات الإلكترونية والحلول الرقمية، ويهدف إلى تسهيل إنجاز المعاملات وتوفير الوقت والجهد للعملاء من خلال تقديم خدمات متعددة بأسلوب منظم واحترافي.</p>
+  <p>نسعى إلى تقديم تجربة سهلة ومميزة، تقوم على سرعة الإنجاز، وجودة الخدمة، والاهتمام باحتياجات العملاء.</p>
+  <div class="vm">
+   <div><b>رؤيتنا</b><p>أن نكون وجهة مميزة في تقديم الخدمات الإلكترونية والحلول الرقمية، وأن نحقق مكانة موثوقة لدى عملائنا.</p></div>
+   <div><b>رسالتنا</b><p>تقديم خدمات إلكترونية متنوعة بجودة عالية، مع الحرص على سرعة الإنجاز وسهولة الوصول إلى الخدمة وتحقيق رضا العملاء.</p></div>
+  </div>
+  <div class="cert"><svg><use href="#i-ok"/></svg><div><b>موثق بوثيقة العمل الحر</b><span>نعمل بشكل نظامي وموثق، لتتعامل معنا بكل ثقة.</span></div></div>
+ </div>
+ <div>
+  <div class="box"><h3>أهدافنا</h3><ul class="chk">
+   <li>تسهيل الوصول إلى الخدمات الإلكترونية.</li>
+   <li>توفير الوقت والجهد على العملاء.</li>
+   <li>تقديم خدمات متنوعة في مكان واحد.</li>
+   <li>تطوير الخدمات بما يتناسب مع احتياجات العملاء.</li>
+   <li>تعزيز رضا العملاء وبناء علاقات طويلة الأمد.</li>
+   <li>مواكبة التحول الرقمي والتطور التقني.</li>
+  </ul></div>
+  <div class="box"><h3>قيمنا</h3><div class="pills">
+   <span>المصداقية والشفافية</span><span>السرعة والإنجاز</span><span>الجودة والإتقان</span><span>الخصوصية والسرية</span><span>الاهتمام بالعميل</span><span>التطوير المستمر</span>
+  </div></div>
+ </div>
+</div></section>
+
+<section class="wrap" id="faq">
+ <div class="faq">
+  <div class="ttl"><h2>الأسئلة الشائعة</h2></div>
+  <details open><summary>كيف أطلب الخدمة؟</summary><p>اضغط على الخدمة اللي تبيها، وبيفتح لك الواتساب برسالة جاهزة فيها اسمها. أرسلها ونتواصل معك مباشرة. تقدر تشوف الخطوات كاملة في صفحة <a href="#how-it-works" style="color:var(--gold);font-weight:700">آلية العمل</a>.</p></details>
+  <details><summary>كم التكلفة والمدة؟</summary><p>تختلف حسب الخدمة، ونوضح لك المتطلبات والتكلفة والمدة المتوقعة قبل البدء، وما نبدأ إلا بعد موافقتك.</p></details>
+  <details><summary>هل التعامل معكم موثوق؟</summary><p>نعم، نعمل بوثيقة العمل الحر، ونلتزم بالأنظمة والتعليمات المعمول بها.</p></details>
+ </div>
+</section>
+</main>
+
+<!-- ========== صفحة: آلية العمل ========== -->
+<main class="view" id="v-how-it-works" hidden>
+ <section class="phero"><div class="wrap">
+  <div class="crumb"><a href="#home">الرئيسية</a> / آلية العمل</div>
+  <h1>آلية العمل</h1>
+  <p>من أول رسالة إلى استلام خدمتك: ست خطوات واضحة.</p>
+ </div></section>
+ <section class="band"><div class="wrap pbody">
+  <ol class="steps">
+   <li><div><b>استقبال طلب العميل</b><span>تتواصل معنا عبر الواتساب وتذكر الخدمة اللي تحتاجها.</span></div></li>
+   <li><div><b>تحديد الخدمة المطلوبة</b><span>نفهم طلبك بدقة ونحدد الخدمة المناسبة له.</span></div></li>
+   <li><div><b>توضيح المتطلبات والتكلفة والمدة المتوقعة</b><span>نوضح لك كل شيء قبل البدء، بدون مفاجآت.</span></div></li>
+   <li><div><b>البدء في التنفيذ بعد موافقة العميل</b><span>ما نبدأ إلا بعد موافقتك على التفاصيل.</span></div></li>
+   <li><div><b>مراجعة الطلب والتأكد من اكتماله</b><span>نراجع العمل ونتأكد إنه مكتمل وصحيح.</span></div></li>
+   <li><div><b>تسليم الخدمة للعميل</b><span>نسلمك خدمتك جاهزة.</span></div></li>
+  </ol>
+  <div class="pnav">
+   <a class="btn wa" data-s="" href="#"><svg><use href="#i-wa"/></svg> ابدأ طلبك الآن</a>
+   <a class="btn ghost" href="#commitment">التزامنا تجاه العملاء</a>
+  </div>
+ </div></section>
+</main>
+
+<!-- ========== صفحة: سياسة الخصوصية ========== -->
+<main class="view" id="v-privacy" hidden>
+ <section class="phero"><div class="wrap">
+  <div class="crumb"><a href="#home">الرئيسية</a> / سياسة الخصوصية</div>
+  <h1>سياسة الخصوصية</h1>
+  <p>خصوصيتك وسرية معلوماتك من أولوياتنا.</p>
+ </div></section>
+ <section class="band"><div class="wrap pbody">
+  <p class="lead">نحرص في هيم للخدمات الإلكترونية على المحافظة على خصوصية العملاء وسرية المعلومات المقدمة، وعدم استخدامها إلا لغرض تنفيذ الخدمة المطلوبة.</p>
+  <div class="cards2">
+   <div><svg><use href="#i-lock"/></svg><div><b>سرية المعلومات</b><span>نحافظ على سرية كل المعلومات اللي تقدمها لنا.</span></div></div>
+   <div><svg><use href="#i-doc"/></svg><div><b>استخدام محدود</b><span>معلوماتك تُستخدم فقط لتنفيذ الخدمة اللي طلبتها.</span></div></div>
+   <div><svg><use href="#i-eye"/></svg><div><b>خصوصية العملاء</b><span>نحترم خصوصيتك في كل مراحل الخدمة.</span></div></div>
+   <div><svg><use href="#i-ok"/></svg><div><b>تعامل نظامي</b><span>نعمل بوثيقة العمل الحر ونلتزم بالأنظمة المعمول بها.</span></div></div>
+  </div>
+  <div class="pnav">
+   <a class="btn wa" data-s="" href="#"><svg><use href="#i-wa"/></svg> تواصل معنا</a>
+   <a class="btn ghost" href="#how-it-works">آلية العمل</a>
+  </div>
+ </div></section>
+</main>
+
+<!-- ========== صفحة: التزامنا تجاه العملاء ========== -->
+<main class="view" id="v-commitment" hidden>
+ <section class="phero"><div class="wrap">
+  <div class="crumb"><a href="#home">الرئيسية</a> / التزامنا تجاه العملاء</div>
+  <h1>التزامنا تجاه العملاء</h1>
+  <p>تجربة مميزة تقوم على الوضوح والشفافية.</p>
+ </div></section>
+ <section class="band"><div class="wrap pbody">
+  <p class="lead">نحرص على تقديم تجربة مميزة تقوم على الوضوح والشفافية، وتوضيح تفاصيل الخدمة قبل البدء بها، والالتزام بالأنظمة والتعليمات المعمول بها.</p>
+  <div class="cards2">
+   <div><svg><use href="#i-eye"/></svg><div><b>الوضوح والشفافية</b><span>كل شيء واضح لك من البداية.</span></div></div>
+   <div><svg><use href="#i-doc"/></svg><div><b>تفاصيل الخدمة قبل البدء</b><span>نوضح المتطلبات والتكلفة والمدة المتوقعة، ونبدأ بعد موافقتك.</span></div></div>
+   <div><svg><use href="#i-scale"/></svg><div><b>الالتزام بالأنظمة</b><span>نلتزم بالأنظمة والتعليمات المعمول بها، وننجز الخدمات وفق الصلاحيات المتاحة.</span></div></div>
+   <div><svg><use href="#i-heart"/></svg><div><b>رضاكم هدفنا</b><span>نهتم باحتياجاتك ونسعى لعلاقة طويلة الأمد.</span></div></div>
+  </div>
+  <div class="pnav">
+   <a class="btn wa" data-s="" href="#"><svg><use href="#i-wa"/></svg> اطلب خدمتك</a>
+   <a class="btn ghost" href="#privacy">سياسة الخصوصية</a>
+  </div>
+ </div></section>
+</main>
+
+<section class="wrap" id="contact" style="margin-top:clamp(40px,5vw,70px)">
+ <div class="contact">
+  <div><h2>جاهز نخدمك؟</h2><p>تواصل معنا الآن عبر الواتساب ونرد عليك بأسرع وقت.</p></div>
+  <div class="cta">
+   <a class="btn wa" data-s="" href="#"><svg><use href="#i-wa"/></svg> تواصل عبر واتساب</a>
+   <a class="btn tk" href="https://www.tiktok.com/@h4joknvgi26" target="_blank" rel="noopener"><svg><use href="#i-tk"/></svg> تابعنا على تيك توك</a>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <div class="wrap">
+  <div>
+   <img class="flogo" src="logo.jpg" alt="شعار هيم">
+   <p class="fdesc">مكتب يقدم مجموعة متنوعة من الخدمات الإلكترونية والحلول الرقمية بأسلوب منظم واحترافي.</p>
+   <div class="soc">
+    <a href="https://wa.me/966542115065" target="_blank" rel="noopener" aria-label="واتساب"><svg><use href="#i-wa"/></svg></a>
+    <a href="https://www.tiktok.com/@h4joknvgi26" target="_blank" rel="noopener" aria-label="تيك توك"><svg><use href="#i-tk"/></svg></a>
+   </div>
+  </div>
+  <div><h4>روابط مهمة</h4><ul>
+   <li><a href="#home">الرئيسية</a></li><li><a href="#about">من نحن</a></li>
+   <li><a href="#how-it-works">آلية العمل</a></li><li><a href="#commitment">التزامنا تجاه العملاء</a></li>
+   <li><a href="#privacy">سياسة الخصوصية</a></li><li><a href="#faq">الأسئلة الشائعة</a></li>
+  </ul></div>
+  <div><h4>خدماتنا</h4><ul id="flist"></ul></div>
+  <div><h4>تواصل معنا</h4><ul class="ci">
+   <li><svg><use href="#i-wa"/></svg><a href="https://wa.me/966542115065" target="_blank" rel="noopener" dir="ltr">054 211 5065</a></li>
+   <li><svg><use href="#i-tk"/></svg><a href="https://www.tiktok.com/@h4joknvgi26" target="_blank" rel="noopener" dir="ltr">@h4joknvgi26</a></li>
+   <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>المملكة العربية السعودية</li>
+   <li><svg><use href="#i-ok"/></svg>موثق بوثيقة العمل الحر</li>
+  </ul></div>
+ </div>
+ <div class="copy">© <span id="yr"></span> هيم للخدمات الإلكترونية. جميع الحقوق محفوظة.</div>
+</footer>
+
+<a class="float" data-s="" href="#" aria-label="اطلب عبر واتساب"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+{
+const WA='966542115065';
+const link=s=>'https://wa.me/'+WA+'?text='+encodeURIComponent(s?'السلام عليكم، أبي أطلب خدمة: '+s:'السلام عليكم، أبي أستفسر عن خدماتكم');
+const sw='stroke="currentColor" stroke-width="2.5" fill="none"';
+/* لإضافة صورة لقسم: حط اسم الملف مكان img:'' مثل img:'edu.jpg' */
+const C=[
+ {t:'الخدمات الحكومية والإلكترونية',img:'',d:'المساعدة في إنجاز الخدمات والمعاملات الإلكترونية عبر المنصات الرسمية، وفق الصلاحيات والأنظمة المتاحة.',items:[],
+  ic:`<path d="M6 18L27 7l21 11z" ${sw}/><path class="g" d="M12 22v16M21 22v16M33 22v16M42 22v16" stroke="currentColor" stroke-width="3"/><path d="M6 42h42M8 47h38" ${sw}/>`},
+ {t:'الخدمات التعليمية والطلابية',img:'',d:'',items:['خدمات نظام نور','خدمات المنصات التعليمية','الخدمات الجامعية','إعداد الملفات والتقارير التعليمية','تنسيق البحوث والعروض التقديمية'],
+  ic:`<path d="M3 20l24-11 24 11-24 11z" ${sw}/><path d="M13 25v11c0 3 6 6 14 6s14-3 14-6V25" ${sw}/><path class="g" d="M47 22v14" stroke="currentColor" stroke-width="3"/><circle class="g" cx="47" cy="38" r="2.5" fill="currentColor"/>`},
+ {t:'خدمات التوظيف والموارد البشرية',img:'',d:'',items:['خدمات منصة جدارات','إعداد وتنسيق السير الذاتية','المساعدة في التقديم على الوظائف','إعداد ملفات الإنجاز المهنية'],
+  ic:`<rect x="5" y="15" width="44" height="30" rx="4" ${sw}/><path d="M19 15v-5h16v5" ${sw}/><path d="M5 27h44" ${sw}/><rect class="g" x="23" y="23" width="8" height="8" rx="1.5" fill="currentColor"/>`},
+ {t:'الخدمات التقنية',img:'',d:'',items:['تصميم المواقع الإلكترونية','تصميم العروض التقديمية','إعداد وتصميم الملفات الرقمية','خدمات المتاجر الإلكترونية','خدمات منصة سلة'],
+  ic:`<rect x="5" y="8" width="44" height="34" rx="4" ${sw}/><path d="M5 16h44" ${sw}/><path class="g" d="M21 23l-6 6 6 6M33 23l6 6-6 6M29 21l-4 16" ${sw}/>`},
+ {t:'خدمات التدريب والتطوير',img:'',d:'',items:['المساعدة في الوصول إلى البرامج التدريبية','خدمات الدورات التدريبية','خدمات الساعات التطوعية','تنظيم ملفات الإنجاز والشهادات'],
+  ic:`<rect x="5" y="8" width="44" height="30" rx="3" ${sw}/><path d="M12 17h22M12 24h14" ${sw}/><circle class="g" cx="39" cy="32" r="7" ${sw}/><path class="g" d="M35 38l-2 9 6-3 6 3-2-9" ${sw}/>`},
+ {t:'الخدمات المتنوعة',img:'',d:'',items:['خدمات الاتصالات','الخدمات المصرفية المتاحة إلكترونياً','الخدمات السياحية','حجوزات الطيران والفنادق','خدمات إلكترونية متنوعة حسب طلبك'],
+  ic:`<rect x="6" y="6" width="18" height="18" rx="4" ${sw}/><rect x="30" y="6" width="18" height="18" rx="4" ${sw}/><rect x="6" y="30" width="18" height="18" rx="4" ${sw}/><path class="g" d="M39 31v16M31 39h16" stroke="currentColor" stroke-width="3"/>`}
+];
+const deck=[...document.querySelectorAll('#deck img')];let di=0;
+const spinD=()=>{deck.forEach((im,k)=>{const r=(k-di+deck.length)%deck.length;im.className=r===0?'p0':r===1?'p1':r===deck.length-1?'p2':''})};
+spinD();if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{di=(di+1)%deck.length;spinD()},3200);
+const G=[
+ ['خدمات أبشر','absher','gov'],['خدمات الأحوال المدنية','ahwal','gov'],['خدمات وزارة العدل وناجز','adl','gov'],
+ ['خدمات حساب المواطن','citizen','gov'],['خدمات الضمان الاجتماعي','daman','gov'],['خدمات التأمينات الاجتماعية','gosi','gov'],
+ ['خدمات مساند','musaned','gov'],['خدمات التأهيل الشامل','tahel','gov'],['خدمات منصات وبرامج حكومية وطنية','platforms','gov'],
+ ['الخدمات التعليمية','edu','edu'],
+ ['سيرة ذاتية احترافية','cv','job'],['خدمات تقديم الوظائف','jobs','job'],['خدمات ملف الإنجاز','portfolio','job'],
+ ['دورات الحوار الوطني','hiwar','train'],['دورات إثرائي','ethrai','train'],
+ ['الخدمات البنكية','bank','misc'],['خدمات الطيران والسفر','travel','misc']
+];
+const F=[['all','الكل'],['gov','حكومية'],['edu','تعليمية'],['job','توظيف'],['train','دورات وتدريب'],['misc','متنوعة']];
+const gal=document.getElementById('gal'),chips=document.getElementById('chips');
+const drawG=f=>{gal.innerHTML=G.filter(g=>f==='all'||g[2]===f).map(([t,i])=>`<article class="sv"><img src="s/${i}.jpg" alt="${t}" loading="lazy" width="640" height="640"><div class="b"><h3>${t}</h3><a class="btn gold" data-s="${t}" href="${link(t)}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> اطلب الخدمة</a></div></article>`).join('')};
+chips.innerHTML=F.map(([k,t],i)=>`<button role="tab" data-f="${k}" aria-selected="${i===0}">${t}</button>`).join('');
+chips.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;chips.querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected',x===b));drawG(b.dataset.f)});
+drawG('all');
+const ord=['أولاً','ثانياً','ثالثاً','رابعاً','خامساً','سادساً'];
+document.getElementById('cats').innerHTML=C.map((c,i)=>`<article class="cat">${c.img?`<img src="${c.img}" alt="${c.t}" loading="lazy">`:''}<div class="in">
+ <div class="hd"><svg class="ic" viewBox="0 0 54 54">${c.ic}</svg><div><span class="n">${ord[i]}</span><h3>${c.t}</h3></div></div>
+ ${c.d?`<p>${c.d}</p>`:''}
+ ${c.items.length?`<ul>${c.items.map(x=>`<li><a data-s="${x}" href="#">${x}<span>اطلب</span></a></li>`).join('')}</ul>`:''}
+ <a class="btn ${c.items.length?'ghost':'gold'}" data-s="${c.t}" href="#"><svg><use href="#i-wa"/></svg> اطلب من ${c.t}</a>
+</div></article>`).join('');
+document.getElementById('flist').innerHTML=C.map(c=>`<li><a href="#services">${c.t}</a></li>`).join('');
+document.querySelectorAll('[data-s]').forEach(a=>{a.href=link(a.dataset.s);a.target='_blank';a.rel='noopener'});
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* التنقل بين الصفحات */
+const pages=['how-it-works','privacy','commitment'];
+const nav=document.getElementById('nav'),m=document.getElementById('menu');
+const show=()=>{
+ const h=location.hash.slice(1)||'home';
+ const pg=pages.includes(h)?h:'home';
+ document.querySelectorAll('.view').forEach(v=>v.hidden=v.id!=='v-'+pg);
+ nav.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+h));
+ if(pg!=='home'||h==='home')window.scrollTo(0,0);
+ else{const el=document.getElementById(h);if(el)el.scrollIntoView()}
+ nav.classList.remove('open');m.setAttribute('aria-expanded',false);
+};
+addEventListener('hashchange',show);show();
+m.addEventListener('click',()=>{const o=nav.classList.toggle('open');m.setAttribute('aria-expanded',o)});
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a&&a.getAttribute('href')===location.hash&&a.getAttribute('href')!=='#')show()});
+}
+</script>
+</body>
+</html>
